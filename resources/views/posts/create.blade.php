@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
     <form action="/p" enctype="multipart/form-data" method="post">
+        @csrf
+
         <div class="row">
             <div class="col-8 offset-2">
 
@@ -19,13 +21,13 @@
                            @error('caption')
                                is-invalid
                            @enderror"
-                           caption="caption"
+                           name="caption"
                            value="{{ old('caption') }}"
                            autocomplete="caption" autofocus>
 
                     @error('caption')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{{ $errors->first('caption') }}</strong>
                         </span>
                     @enderror
                 </div>

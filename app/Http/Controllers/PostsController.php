@@ -13,6 +13,14 @@ class PostsController extends Controller
 
     public function store()
     {
+        $data = request()->validate([
+            'caption' => 'required',
+            'image' => ['required', 'image'],
+        ]);
+
+        \App\Post::create($data);
+
         dd(request()->all());
     }
 }
+
